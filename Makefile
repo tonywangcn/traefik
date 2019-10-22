@@ -1,5 +1,15 @@
 .PHONY: all docs docs-serve
 
+SRV_NAME=traefik
+IMG_NAME=traefik
+REPO_EX=docker.pkg.github.com
+
+NAME_SPACE=tonywangcn
+REPO=${REPO_EX}
+TAG=$(shell date +%Y%m%d%H%M%S)
+FIXTAG?=prod
+NAME=${REPO}/${NAME_SPACE}/${SRV_NAME}/${IMG_NAME}
+
 SRCS = $(shell git ls-files '*.go' | grep -v '^vendor/')
 
 TAG_NAME := $(shell git tag -l --contains HEAD)
@@ -40,7 +50,8 @@ default: binary
 
 ## Build Dev Docker image
 build-dev-image: dist
-	docker build $(DOCKER_BUILD_ARGS) -t "$(TRAEFIK_DEV_IMAGE)" -f build.Dockerfile .
+	docker build $(DOCKER_BUILD_ARGS) -t $(NAME):dev -f build.Dockerfile .
+	docker push ${NAME}:dev
 
 ## Build Dev Docker image without cache
 build-dev-image-no-cache: dist
@@ -149,3 +160,6 @@ run-dev:
 	go generate
 	GO111MODULE=on go build ./cmd/traefik
 	./traefik
+
+dev:
+	docker-compose up -d

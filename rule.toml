@@ -1,0 +1,9 @@
+
+[http.routers]
+  [http.routers.router1]
+    rule = "Host(`localhost`)"
+    service = "whoami1"
+
+[http.services]
+  [[http.services.whoami1.loadBalancer.servers]]
+    url = "http://whoami1:80"
