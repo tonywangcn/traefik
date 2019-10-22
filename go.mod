@@ -69,6 +69,8 @@ require (
 	github.com/opentracing/opentracing-go v1.1.0
 	github.com/openzipkin-contrib/zipkin-go-opentracing v0.4.3
 	github.com/openzipkin/zipkin-go v0.2.1
+	github.com/oschwald/geoip2-golang v1.3.0
+	github.com/oschwald/maxminddb-golang v1.5.0 // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/philhofer/fwd v1.0.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0
