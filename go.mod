@@ -91,6 +91,7 @@ require (
 	github.com/vulcand/predicate v1.1.0
 	golang.org/x/net v0.0.0-20190930134127-c5a3c61f89f3
 	golang.org/x/sys v0.0.0-20190813064441-fde4db37ae7a // indirect
+	golang.org/x/text v0.3.2
 	golang.org/x/time v0.0.0-20190921001708-c4c64cad1fd0
 	golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7 // indirect
 	google.golang.org/grpc v1.22.1
