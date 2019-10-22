@@ -26,6 +26,7 @@ type Middleware struct {
 	RateLimit         *RateLimit         `json:"rateLimit,omitempty" toml:"rateLimit,omitempty" yaml:"rateLimit,omitempty"`
 	RedirectRegex     *RedirectRegex     `json:"redirectRegex,omitempty" toml:"redirectRegex,omitempty" yaml:"redirectRegex,omitempty"`
 	RedirectScheme    *RedirectScheme    `json:"redirectScheme,omitempty" toml:"redirectScheme,omitempty" yaml:"redirectScheme,omitempty"`
+	RedirectGeoip     *RedirectGeoip     `json:"redirectGeoip,omitempty" toml:"redirectGeoip,omitempty" yaml:"redirectGeoip,omitempty"`
 	BasicAuth         *BasicAuth         `json:"basicAuth,omitempty" toml:"basicAuth,omitempty" yaml:"basicAuth,omitempty"`
 	DigestAuth        *DigestAuth        `json:"digestAuth,omitempty" toml:"digestAuth,omitempty" yaml:"digestAuth,omitempty"`
 	ForwardAuth       *ForwardAuth       `json:"forwardAuth,omitempty" toml:"forwardAuth,omitempty" yaml:"forwardAuth,omitempty"`
@@ -327,6 +328,17 @@ type RedirectScheme struct {
 	Scheme    string `json:"scheme,omitempty" toml:"scheme,omitempty" yaml:"scheme,omitempty"`
 	Port      string `json:"port,omitempty" toml:"port,omitempty" yaml:"port,omitempty"`
 	Permanent bool   `json:"permanent,omitempty" toml:"permanent,omitempty" yaml:"permanent,omitempty"`
+}
+
+// +k8s:deepcopy-gen=true
+
+// RedirectGeoip holds the geoip redirection configuration.
+type RedirectGeoip struct {
+	From     string   `json:"from,omitempty" toml:"from,omitempty" yaml:"from,omitempty"`
+	To       string   `json:"to,omitempty" toml:"to,omitempty" yaml:"to,omitempty"`
+	Status   int      `json:"status,omitempty" toml:"status,omitempty" yaml:"status,omitempty"`
+	Country  []string `json:"country,omitempty" toml:"country,omitempty" yaml:"country,omitempty"`
+	Language []string `json:"language,omitempty" toml:"language,omitempty" yaml:"language,omitempty"`
 }
 
 // +k8s:deepcopy-gen=true
