@@ -339,6 +339,7 @@ type RedirectGeoip struct {
 	Status   int      `json:"status,omitempty" toml:"status,omitempty" yaml:"status,omitempty"`
 	Country  []string `json:"country,omitempty" toml:"country,omitempty" yaml:"country,omitempty"`
 	Language []string `json:"language,omitempty" toml:"language,omitempty" yaml:"language,omitempty"`
+	Dir      string   `json:"dir,omitempty" toml:"dir,omitempty" yaml:"dir,omitempty"`
 }
 
 // +k8s:deepcopy-gen=true

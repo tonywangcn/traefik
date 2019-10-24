@@ -271,6 +271,15 @@ func (b *Builder) buildConstructor(ctx context.Context, middlewareName string) (
 			return redirect.NewRedirectScheme(ctx, next, *config.RedirectScheme, middlewareName)
 		}
 	}
+	// RedirectGeoip
+	if config.RedirectGeoip != nil {
+		if middleware != nil {
+			return nil, badConf
+		}
+		middleware = func(next http.Handler) (http.Handler, error) {
+			return redirect.NewGeoRedirect(ctx, next, *config.RedirectGeoip, middlewareName)
+		}
+	}
 
 	// ReplacePath
 	if config.ReplacePath != nil {

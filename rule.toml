@@ -2,7 +2,18 @@
 [http.routers]
   [http.routers.router1]
     rule = "Host(`localhost`)"
+    middlewares = ["geoip"]
     service = "whoami1"
+
+[http.middlewares]
+  [http.middlewares.geoip]
+    [http.middlewares.geoip.redirectGeoip]
+      from = "/helloworld"
+      to = "/world"
+      status = 302
+      # Country = ["CN","US","HK"]
+      Language = ["en"]
+      Dir = "./db/GeoLite2-City.mmdb"
 
 [http.services]
   [[http.services.whoami1.loadBalancer.servers]]
